@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-7 mx-auto">
+        <h1>Notes</h1>
+
+        <form action="" method="post">
+            <div class="mb-3">
+                <label for="body" class="form-label">Content</label>
+                <textarea class="form-control" id="body" name="body" placeholder="Enter here..."></textarea>
+            </div>
+            <button class="btn btn-primary px-4 py-2">Add</button>
+        </form>
+
+        <div class="mt-4">
+            {% for note in user.notes %}
+            <div class="text-muted p-3 px-4 border mb-1 d-flex justify-content-between align-items-center">
+                <span>{{ note.body }}</span>
+                <button class="btn btn-close" onClick="deleteNote({{ note.id }})"></button>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}
